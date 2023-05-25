@@ -9,7 +9,7 @@ pipeline {
    stages{
     stage('CompileandRunSonarAnalysis.') {
             steps {	
-		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=neonecorp_neonesec -Dsonar.organization=neonecorp -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${env.SONAR_TOKEN}'
+		sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=neonecorp_neonesec -Dsonar.organization=neonecorp -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_TOKEN}'
 			}
       } 
   }
