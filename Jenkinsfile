@@ -5,7 +5,6 @@ pipeline {
     }
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
-        SNYK_TOKEN = credentials('SNYK_TOKEN')
     }
     stages {
         stage('Compile and Run Sonar Analysis') {
