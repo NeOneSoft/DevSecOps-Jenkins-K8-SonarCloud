@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         SONAR_TOKEN = credentials('SONAR_TOKEN')
+        SNYK_TOKEN = credentials('SNYK_TOKEN')
     }
     stages {
         stage('Compile and Run Sonar Analysis') {
@@ -18,5 +19,13 @@ pipeline {
                 '''
             }
         }
+
+       stage('RunSCAAnalysisUsingSnyk') {
+            steps {		
+                  withCredentials([string(credentialsId: '${SNYK_TOKEN}', variable: '${SNYK_TOKEN}')]) {
+                        sh 'mvn snyk:test -fn'
+                  }
+		}
+      } 
     }
 }
